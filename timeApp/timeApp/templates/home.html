@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGH7PokiWi5eT7LMjkOcnxLxYCtGUqgNw&libraries=geometry,places&callback=initMap"async defer></script>
+
+    <script src="{% static 'js/map.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/eta_calc.js' %}"></script>
+    <script src="{% static 'js/map_style.js' %}"></script>
+
+</head>
+<body>
+      <header>
+        <nav class="navbar navbar-default" style="background-color: #0077be; border-color: #0077be;">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" style="color: white; font-size: 28px;" href="#">My App</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a style="color: white; font-size: 18px;" href="{% url 'home' %}">Home</a></li>
+                <li><a style="color: white; font-size: 18px;" href="{% url 'place_list' %}">Places</a></li>
+                <li><a style="color: white; font-size: 18px;" href="{% url 'eta_calculation' %}">Get Directions</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    </header>
+
+    <main>
+      {% block content %}
+      <section class="hero">
+        <h2>{{ message }}</h2>
+        <p>Welcome to my app! This is the best way to manage your time and stay on schedule.</p>
+      </section>
+      <section class="featured">
+        <h3>Features</h3>
+        <ul>
+          <li>Visualize the time you have left to reach a place</li>
+          <li>Calculate the estimated time of arrival to your event</li>
+          <li>Set reminders and notifications</li>
+          <li>Customize your preferences</li>
+        </ul>
+      </section>
+      {% endblock %}
+    </main>
+    <!-- Footer -->
+      <footer class="navbar-fixed-bottom">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-xs-12 col-sm-6">
+                      <p>&copy; 2023 My App. All rights reserved.</p>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                      <ul class="nav navbar-nav navbar-right">
+                          <li><a href="#">Twitter</a></li>
+                          <li><a href="#">Facebook</a></li>
+                          <li><a href="#">Instagram</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </footer>
+</body>
+</html>
